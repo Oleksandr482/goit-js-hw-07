@@ -8,14 +8,7 @@ createGalleryItems();
 
 refs.gallery.addEventListener('click', onGalleryItemClick)
 
-function onGalleryItemClick(evt) {
-  evt.preventDefault();
-
-    if (evt.target.nodeName !== 'IMG') {
-        return;
-    }
-  
-  new SimpleLightbox('.gallery a', {
+let gallery = new SimpleLightbox('.gallery a', {
   captions: true,
   captionSelector: 'img',
   captionType: 'attr',
@@ -23,6 +16,15 @@ function onGalleryItemClick(evt) {
   captionPosition: 'bottom',
   captionDelay: 250,
     })
+
+function onGalleryItemClick(evt) {
+  evt.preventDefault();
+
+    if (evt.target.nodeName !== 'IMG') {
+        return;
+    }
+  return gallery;
+  
 };
 
 function createGalleryItems() {
