@@ -35,23 +35,19 @@ function createGalleryItems() {
 }).join('')
     refs.gallery.insertAdjacentHTML('afterbegin', galleryMarkup);
     
-    // console.log(galleryMarkup);
+
 };
 function openModal(sourse) {
   const instance = basicLightbox.create(`
     <img src="${sourse}" width="800" height="600">
-`)
+`, {
+    onShow: () => { document.addEventListener('keydown', onKeyDownEscape); console.log('Поставив слухача!') },
+  onClose: () => { document.removeEventListener('keydown', onKeyDownEscape);  console.log('Зняв слухача!')}})
   instance.show();
-   
-
-  if (document.querySelector('.basicLightbox__placeholder')) {
-    document.addEventListener('keydown', onKeyDownEscape)
-  } 
   
   function onKeyDownEscape(evt) {
     if (evt.code === 'Escape') {
-    console.log('hgjgghvjh');
-      instance.close(() => {document.removeEventListener('keydown', onKeyDownEscape)});
+      instance.close();
     }
 }
 };
