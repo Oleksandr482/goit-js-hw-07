@@ -6,7 +6,7 @@ const refs = {
 
 createGalleryItems();
 
-refs.gallery.addEventListener('click', onGalleryItemClick)
+
 
 let gallery = new SimpleLightbox('.gallery a', {
   captions: true,
@@ -17,25 +17,16 @@ let gallery = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
     })
 
-function onGalleryItemClick(evt) {
-  evt.preventDefault();
-
-    if (evt.target.nodeName !== 'IMG') {
-        return;
-    }
-  return gallery;
-  
-};
-
 function createGalleryItems() {
     const galleryMarkup = galleryItems.map(({ preview, original, description }) => {
-    return `<a class="gallery__item" href="${original}">
+      return `<li>
+    <a class="gallery__item" href="${original}">
     <img
       class="gallery__image"
       src="${preview}"
       alt="${description}"
     />
-  </a>`
+  </a></li>`
 }).join('')
     refs.gallery.insertAdjacentHTML('afterbegin', galleryMarkup);
 };

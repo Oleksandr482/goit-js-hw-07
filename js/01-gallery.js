@@ -45,13 +45,14 @@ function openModal(sourse) {
    
 
   if (document.querySelector('.basicLightbox__placeholder')) {
-  document.addEventListener('keydown', onKeyDownEscape)
-  }
+    document.addEventListener('keydown', onKeyDownEscape)
+  } 
   
   function onKeyDownEscape(evt) {
-  if (evt.code === 'Escape') {
-    instance.close();
-    document.removeEventListener('keydown', onKeyDownEscape);
-      }
+    if (evt.code === 'Escape') {
+    console.log('hgjgghvjh');
+      instance.close(() => {document.removeEventListener('keydown', onKeyDownEscape)});
+    }
 }
 };
+
